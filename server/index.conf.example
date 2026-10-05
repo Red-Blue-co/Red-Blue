@@ -10,10 +10,11 @@
     "MYSQLDB_NAME": "redblue",
     "DIST_FOLDER_NAME": "build",
     ### Optional: OTP emails. Leave SMTP_HOST empty to skip sending (demo mode).
-    ### Zoho (EU, own domain): host smtppro.zoho.eu, port 587; user = the mailbox address;
+    ### Zoho (EU): host smtp.zoho.eu, port 465 (SSL); user = the mailbox address;
     ### password = a Zoho app-specific password. SMTP_FROM must be that mailbox or one of its aliases.
+    ### (smtppro.zoho.eu answered 554 on this plan, and port 587 answered 553.)
     "SMTP_HOST": "",
-    "SMTP_PORT": 587,
+    "SMTP_PORT": 465,
     "SMTP_USER": "",
     "SMTP_PASSWORD": "",
     "SMTP_FROM": "",
