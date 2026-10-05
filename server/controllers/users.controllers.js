@@ -5,7 +5,7 @@ const login_Controller = async (req, res, next) => {
     try {
         const { userName, pass } = req.body;
         if (!userName || !pass) {
-            throw new ApplicationError({message:"I did't get whole data to verfy the login", location: __locationObject })
+            throw new ApplicationError("I did't get whole data to verfy the login")
         }else{
         const sql = `   SELECT userId, userMail, userName, pass, isActive, isDelete 
                         FROM users 
@@ -13,18 +13,18 @@ const login_Controller = async (req, res, next) => {
                         AND pass = ?`;
         const result = await MySQLDB_Helper.executeQuery(sql, [userName, pass]);
         if (result.length === 0) {
-            throw new ApplicationError({ location: __locationObject, errorObject: new Error("login details is incorrect") })
+            throw new ApplicationError("login details is incorrect")
         } else if (result[0].isActive === 1) {
             res.json(ApplicationSuccess.getSuccessObject(result, "sucess "));
         } else if (result[0].isDelete === 1) {
-            throw new ApplicationError({message: "Please Contact your Admin Account is Deactivated", location: __locationObject })
+            throw new ApplicationError("Please Contact your Admin Account is Deactivated")
         } else {
-            throw new ApplicationError({ message: "Your Account is not Active check your mail for otp and try to verify your Account first", location: __locationObject })
+            throw new ApplicationError("Your Account is not Active check your mail for otp and try to verify your Account first")
 
         }}
     }
     catch (err) {
-        throw new ApplicationError({ location: __locationObject, errorObject: new Error(err) })
+        throw err
     }
 };
 
@@ -33,7 +33,7 @@ const createUser_controller = async (req, res, next) => {
     try {
         let { userName, userMail, pass } = req.body;
         if (!userName || !userMail || !pass) {
-            throw new ApplicationError({ message: "I did't get whole data to create the a user", location: __locationObject })
+            throw new ApplicationError("I did't get whole data to create the a user")
         }else{
         let otp, sql, result;
 
@@ -48,7 +48,7 @@ const createUser_controller = async (req, res, next) => {
             mail.push({ userMail: "", isActive: null })
         }
         if (mail[0].userMail === userMail && mail[0].isActive === 1) {
-            throw new ApplicationError({message: `Account with a User Nme: ${mail[0].userName} is already Created using this mailId `, location: __locationObject })
+            throw new ApplicationError(`Account with a User Nme: ${mail[0].userName} is already Created using this mailId `)
         } else if (mail[0].isActive === 0) {
             sql = ` UPDATE users 
                     SET otp = ? 
@@ -62,7 +62,7 @@ const createUser_controller = async (req, res, next) => {
             result = await MySQLDB_Helper.executeQuery(sql, [userName, userMail, pass, otp])
         }
         if (!result) {
-            throw new ApplicationError({message: "User data is not proper error from mysql", location: __locationObject });
+            throw new ApplicationError("User data is not proper error from mysql");
         } else {
             const valuesObject = generateOtpValues(otp)
             const obj = {
@@ -90,7 +90,7 @@ const createUser_controller = async (req, res, next) => {
                 )
             }
             const error = (err) => {
-                throw new ApplicationError({ message: "Error while Mail Sending", location: __locationObject, errorObject: new Error(err) })
+                throw new ApplicationError("Error while Mail Sending", err)
             }
 
 
@@ -111,7 +111,7 @@ const createUser_controller = async (req, res, next) => {
         }}
     } catch (err) {
 
-        throw new ApplicationError({ location: __locationObject, errorObject: new Error(err) })
+        throw err
     }
 
 }
@@ -119,7 +119,7 @@ const verifyOtp_controller = async (req, res, next) => {
     try {
         const { otp, userId } = req.body
         if (!otp || !userId) {
-            throw new ApplicationError({message:"I did't get whole data to verfy the otp", location: __locationObject })
+            throw new ApplicationError("I did't get whole data to verfy the otp")
         }else{
         const sql = `   SELECT otp 
                         FROM users 
@@ -132,10 +132,10 @@ const verifyOtp_controller = async (req, res, next) => {
             await MySQLDB_Helper.executeQuery(updateSql, [true, userId])
             res.json(ApplicationSuccess.getSuccessObject(result, "User verifyed "))
         } else {
-            throw new ApplicationError({message: "OTP is wrong check your mail again", location: __locationObject })
+            throw new ApplicationError("OTP is wrong check your mail again")
         }}
     } catch (err) {
-        throw new ApplicationError({ location: __locationObject, errorObject: new Error(err) })
+        throw err
     }
 }
 
@@ -144,7 +144,7 @@ const forgetPassword_controller = async (req, res, next) => {
     try {
         const { userName } = req.query;
         if (!userName) {
-            throw new ApplicationError({message: "I did't get whole data to look for your password", location: __locationObject })
+            throw new ApplicationError("I did't get whole data to look for your password")
         }else{
     
         const sql = `   SELECT pass 
@@ -152,14 +152,14 @@ const forgetPassword_controller = async (req, res, next) => {
                         WHERE userName = ?`;
         const result = await MySQLDB_Helper.executeQuery(sql, [userName]);
         if (result.length === 0) {
-            throw new ApplicationError({message: "I can't find your account create a new account ", location: __locationObject })
+            throw new ApplicationError("I can't find your account create a new account ")
 
         } else {
             res.json(ApplicationSuccess.getSuccessObject(result[0], "This is your password"))
         }}
     
     } catch (err) {
-        throw new ApplicationError({ location: __locationObject, errorObject: new Error(err) })
+        throw err
     }
 }
 
@@ -167,7 +167,7 @@ const reSendOtp_controller = async (req, res, next) => {
     try {
         const { userId } = req.query;
         if (!userId) {
-            throw new ApplicationError({message: "I did't get whole data to resend Otp", location: __locationObject })
+            throw new ApplicationError("I did't get whole data to resend Otp")
         } else {
 
             const otp = generateOTP({ type: 'numeric', length: 4, allowRepetition: false })
@@ -185,7 +185,7 @@ const reSendOtp_controller = async (req, res, next) => {
             res.json(ApplicationSuccess.getSuccessObject(otp, "This is your stuff please you this atlest this time or else someone else will play with it"))
         }
     } catch (err) {
-        throw new ApplicationError({ location: __locationObject, errorObject: new Error(err) })
+        throw err
     }
 }
 module.exports = {

@@ -8,5 +8,23 @@ const req = axios.create({
     "Apikey": "heloo"
   }
 });
+
+// sv-nex replies with { errorCode, message, data } and sends errors as HTTP 500.
+// The screens read { errorCode, errorDescription, Data } and expect a resolved
+// response, so map the reply here once instead of in every component.
+const toScreenShape = (res) => {
+  const body = res.data || {};
+  res.data = { ...body, errorDescription: body.errorDescription ?? body.message, Data: body.Data ?? body.data };
+  return res;
+};
+
+req.interceptors.response.use(toScreenShape, (error) => {
+  if (error.response?.data && typeof error.response.data === "object") {
+    return toScreenShape(error.response);
+  }
+  // Server unreachable or a non-JSON reply: show a message instead of crashing
+  return { data: { errorCode: "NETWORK", errorDescription: "Can't reach the server right now. Please try again." } };
+});
+
 export default req
 

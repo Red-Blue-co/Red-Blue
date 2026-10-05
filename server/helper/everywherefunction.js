@@ -86,7 +86,7 @@ const logToDatabase = async (tableName, recordId, action, userId, data = []) => 
         const result = await MySQLDB_Helper.executeQuery(sql, [tableName, recordId, action, userId, Date.now(), data])
     } catch (err) {
         if (err) {
-            throw new ApplicationError({ location: __locationObject, errorObject: new Error(err.message) })
+            throw err
         }
     }
 
