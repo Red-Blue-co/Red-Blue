@@ -1,0 +1,16 @@
+### Copy to index.conf (git-ignored) and fill in. sv-nex reads the block named by NE_ENV.
+{
+  "Production": {
+    "APPLICATION_PORT_NUMBER": 3010,
+    "DB_TYPE": "mysql",
+    "MYSQLDB_HOST": "localhost",
+    "MYSQLDB_PORT": 3306,
+    "MYSQLDB_USER": "redblue",
+    "MYSQLDB_PASSWORD": "change-me",
+    "MYSQLDB_NAME": "redblue",
+    "DIST_FOLDER_NAME": "build",
+    ### Optional: OTP emails. Leave empty to skip sending (demo mode).
+    "SMTP_HOST": "",
+    "SMTP_APIKEY": ""
+  }
+}

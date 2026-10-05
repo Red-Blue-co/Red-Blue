@@ -2,10 +2,10 @@
 const {
   initializeGlobalErrorHandler,
   ApplicationError,
-  VW_Environment,
+  NE_Environment,
   Implementation_Manager,
-  Email_Helper  
-} = require('node_helper');
+  NE_EmailHelper
+} = require('sv-nex');
 initializeGlobalErrorHandler();
 
 const routes = require('./routedefinitions');
@@ -14,12 +14,12 @@ const defaultEmailTemplates = require('./emailTemplate');
 
 const initServer = async () => {
   try {
-    await VW_Environment.setEnvironment();
+    await NE_Environment.setEnvironment();
     await Implementation_Manager.initializeImplementation();
 
-    Email_Helper.setupEmailSender("test", { user: "apikey", senderEmailID: "admin@sherin.fun", pass: process.env.SMTP_APIKEY, senderName: "SherinV", host: process.env.SMTP_HOST, port: 587 })
+    NE_EmailHelper.setupEmailSender("test", { user: "apikey", senderEmailID: "admin@sherin.fun", pass: process.env.SMTP_APIKEY, senderName: "SherinV", host: process.env.SMTP_HOST, port: 587 })
 
-    Email_Helper.setDefaultTemplates(defaultEmailTemplates["defaultEmailTemplates"]);
+    NE_EmailHelper.setDefaultTemplates(defaultEmailTemplates["defaultEmailTemplates"]);
     Implementation_Manager.initializeHttpAndStartServer(routes);
 
   } catch (err) {

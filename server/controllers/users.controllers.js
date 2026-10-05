@@ -1,4 +1,4 @@
-const { ApplicationError, ApplicationSuccess, MySQLDB_Helper, logMessage, Email_Helper } = require('node_helper');
+const { ApplicationError, ApplicationSuccess, MySQLDB_Helper, logMessage, NE_EmailHelper } = require('sv-nex');
 const { generateOTP, generateOtpValues } = require('../helper/everywherefunction')
 
 const login_Controller = async (req, res, next) => {
@@ -71,7 +71,7 @@ const createUser_controller = async (req, res, next) => {
                 }
             }
             const success = () => {
-                const userId = mail[0].userId;
+                const userId = mail[0].userId ?? result.insertId;
                 logMessage({level:"INFO", message:` OTP for user ${userId} will expire in 5 minutes.`});
 
                 // This will run only ONCE after a 5-minute delay.
@@ -94,14 +94,19 @@ const createUser_controller = async (req, res, next) => {
             }
 
 
-            // success()
-            await Email_Helper.sendEmailToIndividualUsers(
-                "test",
+            // No SMTP configured (demo): skip the mail and reply straight away
+            const sender = NE_EmailHelper.getEmailSender("test");
+            if (!sender) {
+                logMessage({ level: "WARNING", message: "Email is not configured, so the OTP mail was not sent." });
+                return success();
+            }
+            await sender.sendEmailToIndividualUsers(
                 "login",
                 valuesObject,
                 obj,
                 ["vsherin4@gmail.com"],
-                { successCallback: success, failureCallback: error }
+                success,
+                error
             )
         }}
     } catch (err) {

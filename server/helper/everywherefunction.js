@@ -1,4 +1,4 @@
-const { MySQLDB_Helper, ApplicationError } = require("node_helper");
+const { MySQLDB_Helper, ApplicationError } = require("sv-nex");
 
 /**
  * Generates a customizable One-Time Password (OTP).

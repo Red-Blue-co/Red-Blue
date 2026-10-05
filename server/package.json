@@ -4,12 +4,13 @@
   "description": "A project cretaed by us for oru protfloio ",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "SherinV",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
-    "node_helper": "file:../../node_helper-1.0.0.tgz"
+    "sv-nex": "^1.0.9"
   }
 }
