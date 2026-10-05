@@ -9,8 +9,14 @@
     "MYSQLDB_PASSWORD": "change-me",
     "MYSQLDB_NAME": "redblue",
     "DIST_FOLDER_NAME": "build",
-    ### Optional: OTP emails. Leave empty to skip sending (demo mode).
+    ### Optional: OTP emails. Leave SMTP_HOST empty to skip sending (demo mode).
+    ### Zoho (EU, own domain): host smtppro.zoho.eu, port 587; user = the mailbox address;
+    ### password = a Zoho app-specific password. SMTP_FROM must be that mailbox or one of its aliases.
     "SMTP_HOST": "",
-    "SMTP_APIKEY": ""
+    "SMTP_PORT": 587,
+    "SMTP_USER": "",
+    "SMTP_PASSWORD": "",
+    "SMTP_FROM": "",
+    "SMTP_SENDER_NAME": "Red-Blue"
   }
 }
