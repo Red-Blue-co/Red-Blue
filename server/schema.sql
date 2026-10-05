@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS products (
   productId          INT AUTO_INCREMENT PRIMARY KEY,
   productName        VARCHAR(255) NOT NULL,
   productDescription TEXT,
-  productImg         VARCHAR(500)
+  productImg         VARCHAR(500),
+  isDeleted          TINYINT(1)   NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS banner (
