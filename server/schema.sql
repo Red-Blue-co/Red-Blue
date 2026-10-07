@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS products (
   productName        VARCHAR(255) NOT NULL,
   productDescription TEXT,
   productImg         VARCHAR(500),
+  productColor       VARCHAR(20)  NOT NULL DEFAULT '#0065c3',
   isDeleted          TINYINT(1)   NOT NULL DEFAULT 0
 );
 

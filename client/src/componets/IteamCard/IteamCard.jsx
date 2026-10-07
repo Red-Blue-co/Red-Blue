@@ -18,7 +18,7 @@ function IteamCard() {
     <div className='cardboady'>
      {products.map((item , i ) => (
 
-       <div key={item.productId} className = {`card ${activeToggel === i? 'active' : ''}`} onClick={() => setActiveToggle(prev => (prev === i ? null : i))} >
+       <div key={item.productId} style={{ '--c': item.color }} className = {`card ${activeToggel === i? 'active' : ''}`} onClick={() => setActiveToggle(prev => (prev === i ? null : i))} >
          <div className= "circle"  > </div>
         <div className='contents'>
           <h2>{item.name}</h2>

@@ -23,7 +23,8 @@ const getProduct_controller = async (req, res, next) => {
 
 // Every product for the product cards
 const getProducts_controller = async (req, res, next) => {
-    const sql = `SELECT productId, productName as name, productDescription as disp, productImg as img
+    const sql = `SELECT productId, productName as name, productDescription as disp, productImg as img,
+                        productColor as color
                  FROM products
                  WHERE isDeleted = 0
                  ORDER BY productId`;
