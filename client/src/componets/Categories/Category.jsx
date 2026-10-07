@@ -4,7 +4,11 @@ import IteamCard from '../IteamCard/IteamCard';
 import req from '../../Axios/Axios';
 
 function Category({ onAdd }) {
-  const [hoveredColor, setHoveredColor] = useState(null);
+  // The chosen category; null shows every product
+  const [selected, setSelected] = useState(null);
+  const choose = (item) => {
+    setSelected(selected?.id === item.id ? null : item); // tap again: show all
+  };
   // The category cards come from the categories table: { id, name, tagline, img, color }
   const [categories, setCategories] = useState([]);
 
@@ -16,19 +20,19 @@ function Category({ onAdd }) {
 
   return (
     <div
-      className="body"
-      style={{
-        background: hoveredColor ? hoveredColor : "#fff",
-        transition: "background 0.3s"
-      }}
+      className="body cat-section"
     >
+      <div className="cat-head">
+        <h2>Categories</h2>
+        <p>Choose a category, then pick a can.</p>
+      </div>
       <div className="containers">
         {categories.map((item, index) => (
           <div
             key={item.id}
-            className="box"
+            className={`box ${selected?.id === item.id ? 'chosen' : ''}`}
             data-color={`clr${index + 1}`}
-            onClick={() => setHoveredColor(item.color)}
+            onClick={() => choose(item)}
             // onMouseLeave={() => setHoveredColor(null)}
           >
             <div className="imgBx">
@@ -40,7 +44,11 @@ function Category({ onAdd }) {
           </div>
         ))}
         <br />
-        <IteamCard onAdd={onAdd} />
+        <div className="cat-filter">
+          <span>{selected ? <>Showing <b>{selected.name}</b></> : 'Showing all drinks'}</span>
+          {selected && <button type="button" onClick={() => setSelected(null)}>Show all</button>}
+        </div>
+        <IteamCard onAdd={onAdd} categoryId={selected?.id} />
       </div>
     </div>
   );

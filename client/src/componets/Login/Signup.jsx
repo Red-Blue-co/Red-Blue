@@ -220,7 +220,7 @@ function App() {
                   Sign Up
                 </button>
               </div>
-              <img src="log.svg" className="image" alt="login" />
+              <img src="/img/login-signin.png" className="image" alt="Red-Blue cans" />
             </div>
 
             {/* Right Panel */}
@@ -232,7 +232,7 @@ function App() {
                   Sign In
                 </button>
               </div>
-              <img src="register.svg" className="image" alt="register" />
+              <img src="/img/login-signup.png" className="image" alt="Red-Blue cans" />
             </div>
           </div>
         </div>

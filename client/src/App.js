@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import { LoaderProvider, useLoader } from "./LoaderContext";
 import IteamCard from "./componets/IteamCard/IteamCard";
+import "./premium.css"; // last, so it refines every component style
 // import AddToCart from "./componets/AddToCart/AddToCart";
 
 const GlobalLoader = () => {

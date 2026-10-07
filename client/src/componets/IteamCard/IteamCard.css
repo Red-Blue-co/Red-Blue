@@ -151,3 +151,238 @@
     padding: 20px;
   }
 }
+
+/* ---------- polish ---------- */
+.card {
+  margin: 10px 0 40px;
+  cursor: pointer;
+}
+
+/* name and price under the circle; hidden while the card is open */
+.card .label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -30px;
+  text-align: center;
+  transition: opacity 0.3s;
+}
+.card .label b { display: block; font-size: 1em; }
+.card .label span { font-size: 0.9em; opacity: 0.7; }
+.card.active .label { opacity: 0; pointer-events: none; }
+
+/* a little lift when you point at a closed card */
+.card:not(.active):hover .circle::before {
+  clip-path: circle(98px at center);
+}
+.card:not(.active):hover img {
+  transform: translate(-50%, -54%) rotate(-6deg);
+}
+
+/* ---------- the opened card ---------- */
+/* phones: no row wrappers, the cards flow as before */
+.card-row-off { display: contents; }
+
+/* desktop: products are grouped into rows (see IteamCard.jsx); every row has room for one card
+   to open and a fixed height, so opening a card never covers or pushes another product */
+@media (min-width: 992px) {
+  .cardboady { width: 100%; flex-direction: column; flex-wrap: nowrap; gap: 0; }
+  .card-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 400px;
+  }
+  .card { margin: 0; }
+  .card .label { bottom: -36px; }
+  .card.active {
+    width: 560px;
+    height: 340px;
+  }
+}
+.card.active {
+  border-radius: 28px;
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.55);
+  z-index: 5;
+}
+
+/* the card takes the drink's colour, with a soft light from the top corner */
+.card.active .circle::before {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.28), transparent 45%),
+    linear-gradient(135deg, color-mix(in srgb, var(--c) 85%, #fff), var(--c) 55%, color-mix(in srgb, var(--c) 70%, #000));
+}
+
+/* a big ring behind the can */
+.card.active .circle::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-50%);
+}
+
+.card.active img {
+  left: 80%;
+  height: 290px;
+  transform: translate(-50%, -50%) rotate(8deg);
+  filter: drop-shadow(0 24px 24px rgba(0, 0, 0, 0.35));
+}
+
+.card.active .contents {
+  width: 62%;
+  padding: 28px 10px 28px 34px;
+}
+
+.card .contents .tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.card.active .contents h2 {
+  font-size: 1.9em;
+  margin-bottom: 6px;
+}
+
+.card .contents .rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+/* five stars filled to the rating */
+.card .contents .stars {
+  --percent: calc(var(--r) / 5 * 100%);
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+.card .contents .stars::before {
+  content: '★★★★★';
+  background: linear-gradient(90deg, #ffd25a var(--percent), rgba(255, 255, 255, 0.35) var(--percent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.card.active .contents p {
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.card .contents .notes {
+  margin-top: 8px;
+  font-size: 12px !important;
+}
+.card .contents .notes b {
+  font-weight: 600;
+  opacity: 0.8;
+  margin-right: 4px;
+}
+
+.card .contents .facts {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  margin: 14px 0 16px;
+}
+.card .contents .facts li {
+  flex: 1;
+  padding: 8px 6px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: #fff;
+}
+.card .contents .facts b {
+  display: block;
+  font-size: 14px;
+}
+.card .contents .facts span {
+  font-size: 10px;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card .contents .buy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.card .contents .buy .price {
+  margin: 0;
+  font-size: 1.6em;
+  font-weight: 700;
+  color: #fff;
+}
+.card .contents .buy .price small {
+  margin-left: 4px;
+  font-size: 0.45em;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* each part slides in one after another when the card opens */
+.card.active .contents > * {
+  animation: card-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.card.active .contents > :nth-child(2) { animation-delay: 0.05s; }
+.card.active .contents > :nth-child(3) { animation-delay: 0.1s; }
+.card.active .contents > :nth-child(4) { animation-delay: 0.15s; }
+.card.active .contents > :nth-child(5) { animation-delay: 0.2s; }
+.card.active .contents > :nth-child(6) { animation-delay: 0.25s; }
+.card.active .contents > :nth-child(7) { animation-delay: 0.3s; }
+@keyframes card-in {
+  from { opacity: 0; transform: translateX(-14px); }
+}
+
+@media (max-width: 991px) {
+  .card.active {
+    width: calc(100vw - 40px);
+    max-width: 380px;
+    height: 640px;
+  }
+  .card.active .circle::after {
+    right: 50%;
+    top: auto;
+    bottom: -40px;
+    transform: translateX(50%);
+  }
+  .card.active .contents {
+    width: 100%;
+    padding: 26px;
+  }
+  .card.active img {
+    top: 78%;
+    left: 50%;
+    height: 230px;
+  }
+}
+
+/* the list fades while a new category loads, then the cards rise in */
+.cardboady { transition: opacity 0.25s; }
+.cardboady.fading { opacity: 0.25; }
+.cardboady:not(.fading) .card { animation: card-rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes card-rise { from { opacity: 0; transform: translateY(16px); } }

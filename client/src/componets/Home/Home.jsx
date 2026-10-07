@@ -43,6 +43,7 @@ function Home() {
         </div>
         <div className='content'>
           <div className='textbox'>
+            <span className='kicker' key={activeIndex.name}>Now pouring · {activeIndex.name}</span>
             <h2>Welcome to our store</h2>
             <p>Discover the best products at unbeatable prices.</p>
             <a href='#drinks' className='btn'>Shop Now</a>

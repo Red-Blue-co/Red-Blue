@@ -21,14 +21,17 @@ const getProduct_controller = async (req, res, next) => {
     }
 }
 
-// Every product for the product cards
+// Every product for the product cards, or only one category's with ?categoryId=
 const getProducts_controller = async (req, res, next) => {
-    const sql = `SELECT productId, productName as name, productDescription as disp, productImg as img,
-                        productColor as color, productPrice as price
+    const categoryId = Number(req.query.categoryId) || null;
+    const sql = `SELECT productId, categoryId, productName as name, productDescription as disp, productImg as img,
+                        productColor as color, productPrice as price, productTag as tag,
+                        productNotes as notes, calories, sugarGrams as sugar, caffeineMg as caffeine,
+                        rating, reviews
                  FROM products
-                 WHERE isDeleted = 0
+                 WHERE isDeleted = 0 AND (? IS NULL OR categoryId = ?)
                  ORDER BY productId`;
-    const result = await MySQLDB_Helper.executeQuery(sql, []);
+    const result = await MySQLDB_Helper.executeQuery(sql, [categoryId, categoryId]);
     res.json(ApplicationSuccess.getSuccessObject(result || [], "Products"))
 }
 

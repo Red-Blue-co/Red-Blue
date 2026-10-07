@@ -15,11 +15,19 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS products (
   productId          INT AUTO_INCREMENT PRIMARY KEY,
+  categoryId         INT          NOT NULL DEFAULT 1,
   productName        VARCHAR(255) NOT NULL,
   productDescription TEXT,
   productImg         VARCHAR(500),
   productColor       VARCHAR(20)  NOT NULL DEFAULT '#0065c3',
   productPrice       DECIMAL(6,2) NOT NULL DEFAULT 0,
+  productTag         VARCHAR(40),
+  productNotes       VARCHAR(255),
+  calories           INT          NOT NULL DEFAULT 0,
+  sugarGrams         DECIMAL(4,1) NOT NULL DEFAULT 0,
+  caffeineMg         INT          NOT NULL DEFAULT 0,
+  rating             DECIMAL(2,1) NOT NULL DEFAULT 0,
+  reviews            INT          NOT NULL DEFAULT 0,
   isDeleted          TINYINT(1)   NOT NULL DEFAULT 0
 );
 
