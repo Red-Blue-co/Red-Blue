@@ -1,0 +1,11 @@
+# app.sherin.fun by Sherin Varghese (https://sherin.fun)
+
+User-agent: *
+Allow: /
+Disallow: /cart
+Disallow: /profile
+Disallow: /products/
+Disallow: /user/
+Disallow: /cart/
+
+Sitemap: https://app.sherin.fun/sitemap.xml

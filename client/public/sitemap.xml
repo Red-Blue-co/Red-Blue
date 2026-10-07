@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://app.sherin.fun/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://app.sherin.fun/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://app.sherin.fun/" />
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/brand/emblem-600.png</image:loc>
+      <image:title>Two Tone emblem</image:title>
+      <image:caption>The Two Tone emblem in teal and lemon</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/login-signin.png</image:loc>
+      <image:title>Two Tone cans</image:title>
+      <image:caption>Lime Fizz, Classic Cola and Orange Pop cans</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://app.sherin.fun/home</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://app.sherin.fun/home" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://app.sherin.fun/home" />
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/classic-cola.png</image:loc>
+      <image:title>Classic Cola</image:title>
+      <image:caption>Classic Cola, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/cherry-cola.png</image:loc>
+      <image:title>Cherry Cola</image:title>
+      <image:caption>Cherry Cola, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/orange-pop.png</image:loc>
+      <image:title>Orange Pop</image:title>
+      <image:caption>Orange Pop, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/lime-fizz.png</image:loc>
+      <image:title>Lime Fizz</image:title>
+      <image:caption>Lime Fizz, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/grape-soda.png</image:loc>
+      <image:title>Grape Soda</image:title>
+      <image:caption>Grape Soda, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/root-beer.png</image:loc>
+      <image:title>Root Beer</image:title>
+      <image:caption>Root Beer, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/peach-iced-tea.png</image:loc>
+      <image:title>Peach Iced Tea</image:title>
+      <image:caption>Peach Iced Tea, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/lemon-iced-tea.png</image:loc>
+      <image:title>Lemon Iced Tea</image:title>
+      <image:caption>Lemon Iced Tea, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/hibiscus-berry.png</image:loc>
+      <image:title>Berry Hibiscus</image:title>
+      <image:caption>Berry Hibiscus, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/jasmine-green.png</image:loc>
+      <image:title>Jasmine Green</image:title>
+      <image:caption>Jasmine Green, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/ginger-lemonade.png</image:loc>
+      <image:title>Ginger Lemonade</image:title>
+      <image:caption>Ginger Lemonade, a Two Tone 330 ml can</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://app.sherin.fun/img/products/mint-sparkling.png</image:loc>
+      <image:title>Mint Sparkling</image:title>
+      <image:caption>Mint Sparkling, a Two Tone 330 ml can</image:caption>
+    </image:image>
+  </url>
+</urlset>

@@ -1,0 +1,6 @@
+# Two Tone · Sodas & Teas
+
+> Two Tone is a demo drinks store with twelve small-batch sodas and iced teas. Sign in, filter by category, fill a cart and check out (no payment is taken). Built by Sherin Varghese (https://sherin.fun) with React, Express, MySQL and the Nex framework.
+
+- [Store](https://app.sherin.fun/home)
+- [Source code](https://github.com/Red-Blue-co/Red-Blue)

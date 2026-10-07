@@ -5,10 +5,12 @@ import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom";
 import { useLoader } from "../../LoaderContext";
 import { setUser } from "../../session";
+import usePageMeta from "../../usePageMeta";
 
 
 function App() {
   const nav = useNavigate();
+  usePageMeta({ title: 'Two Tone · Sign in or join', description: 'Sign in to Two Tone or create an account to save favourites, build 12-packs and order small-batch sodas and iced teas.', path: '/' });
   const { setLoading } = useLoader()
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [showOtp, setShowOtp] = useState(false);

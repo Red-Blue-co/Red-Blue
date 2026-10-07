@@ -9,11 +9,13 @@ import { useLoader } from '../../LoaderContext';
 import { useCart, euro } from '../../CartContext';
 import '../Cart/CartPage.css';
 import './Profile.css';
+import usePageMeta from '../../usePageMeta';
 
 const day = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
 function Profile() {
   const nav = useNavigate();
+  usePageMeta({ title: 'Your profile · Two Tone', description: 'Your Two Tone member card and orders.', path: '/profile', noindex: true });
   const { state } = useLocation();
   const { user, count } = useCart();
   const [orders, setOrders] = useState(null);

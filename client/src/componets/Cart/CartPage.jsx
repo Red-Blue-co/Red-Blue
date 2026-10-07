@@ -5,9 +5,11 @@ import SiteHeader from '../SiteHeader/SiteHeader';
 import Footer from '../Footer/Footer';
 import { useCart, euro, FREE_DELIVERY_FROM } from '../../CartContext';
 import './CartPage.css';
+import usePageMeta from '../../usePageMeta';
 
 function CartPage() {
   const nav = useNavigate();
+  usePageMeta({ title: 'Your cart · Two Tone', description: 'Your Two Tone cart.', path: '/cart', noindex: true });
   const { user, items, count, subtotal, delivery, total, setQty, checkout } = useCart();
   const [placing, setPlacing] = useState(false);
 

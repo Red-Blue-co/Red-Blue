@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../CartContext';
+import usePageMeta from '../../usePageMeta';
 import './Home.css';
 import Category from '../Categories/Category';
 import Footer from '../Footer/Footer';
@@ -20,6 +21,7 @@ function Home() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   const nav = useNavigate();
+  usePageMeta({ title: 'Two Tone · Sodas & Teas, shipped cold', description: 'Twelve small-batch sodas and iced teas from Two Tone: Classic Cola, Cherry Cola, Orange Pop, Peach Iced Tea and more. Pick a category, fill your cart, check out.', path: '/home' });
   const { count: cartCount, add } = useCart();
   // add to the cart; with nobody signed in, go to sign in
   const addToCart = async (product) => { if (!(await add(product)) && !localStorage.getItem('twotone-user')) nav('/'); };
