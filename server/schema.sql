@@ -1,5 +1,6 @@
 -- Tables Red-Blue's server reads and writes (derived from the SQL in controllers/ and helper/).
 -- Run once against the app database:  mysql -u redblue -p redblue < schema.sql
+-- Then load the demo shop data:          mysql -u redblue -p redblue < seed.sql
 
 CREATE TABLE IF NOT EXISTS users (
   userId     INT AUTO_INCREMENT PRIMARY KEY,
@@ -21,9 +22,18 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 CREATE TABLE IF NOT EXISTS banner (
-  id         INT AUTO_INCREMENT PRIMARY KEY,
-  bannerName VARCHAR(255) NOT NULL,
-  bannerImg  VARCHAR(500)
+  id          INT AUTO_INCREMENT PRIMARY KEY,
+  bannerName  VARCHAR(255) NOT NULL,
+  bannerImg   VARCHAR(500),
+  bannerColor VARCHAR(20)  NOT NULL DEFAULT '#fc4a55'
+);
+
+CREATE TABLE IF NOT EXISTS categories (
+  categoryId      INT AUTO_INCREMENT PRIMARY KEY,
+  categoryName    VARCHAR(100) NOT NULL,
+  categoryTagline VARCHAR(255),
+  categoryImg     VARCHAR(500),
+  categoryColor   VARCHAR(20)  NOT NULL DEFAULT '#162527'
 );
 
 CREATE TABLE IF NOT EXISTS AuditLog (

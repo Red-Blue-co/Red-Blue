@@ -57,14 +57,19 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 100px;
+  /* product photos sit in the circle as round crops */
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
   pointer-events: none;
   transition: 0.5s;
 }
 
 .card.active img {
-  left: 82%;
-  height: 200px;
+  left: 84%;
+  width: 110px;
+  height: 110px;
 }
 
 .card .contents {

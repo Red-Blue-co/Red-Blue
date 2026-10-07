@@ -134,10 +134,18 @@
 }
 
 .content img {
-    max-width: 400px;
-    width: 100%;
-    height: 100%;
+    /* the drink photo for the current slide, as a round crop */
+    width: min(420px, 100%);
+    aspect-ratio: 1;
+    border-radius: 50%;
     object-fit: cover;
+    border: 10px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+    animation: hero-in 0.6s ease;
+}
+
+@keyframes hero-in {
+    from { opacity: 0; transform: scale(0.94); }
 }
 
 .thumb {
@@ -184,7 +192,10 @@
 }
 
 .thumb li img {
-    max-width: 50px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    display: block;
 }
 
 @media (max-width: 991px) {

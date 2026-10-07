@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Category.css';
 import IteamCard from '../IteamCard/IteamCard';
-const testData = [
-  {
-    name: "Someone",
-    role: "SEO Expert",
-    img: "../img1.jpg",
-    data: "clr1",
-    bgColor: "#162527"
-  },
-  {
-    name: "Someone",
-    role: "SEO Expert",
-    img: "../img1.jpg",
-    data: "clr2",
-    bgColor: "#202011"
-  }
-];
-
+import req from '../../Axios/Axios';
 
 function Category() {
   const [hoveredColor, setHoveredColor] = useState(null);
+  // The category cards come from the categories table: { id, name, tagline, img, color }
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    req.get('/products/getcategories').then((res) => {
+      if (Array.isArray(res.data?.Data)) setCategories(res.data.Data);
+    });
+  }, []);
 
   return (
     <div
@@ -31,19 +23,19 @@ function Category() {
       }}
     >
       <div className="containers">
-        {testData.map((item, index) => (
+        {categories.map((item, index) => (
           <div
-            key={index}
+            key={item.id}
             className="box"
-            data-color={item.data}
-            onClick={() => setHoveredColor(item.bgColor)}
+            data-color={`clr${index + 1}`}
+            onClick={() => setHoveredColor(item.color)}
             // onMouseLeave={() => setHoveredColor(null)}
           >
             <div className="imgBx">
-              <img alt="img" src={item.img} />
+              <img alt={item.name} src={item.img} />
             </div>
             <div className="glass">
-              <h3>{item.name}<br /><span>{item.role}</span></h3>
+              <h3>{item.name}<br /><span>{item.tagline}</span></h3>
             </div>
           </div>
         ))}
