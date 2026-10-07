@@ -20,7 +20,7 @@ function Category({ onAdd }) {
 
   return (
     <div
-      className="body cat-section"
+      className="body cat-section" id="drinks"
     >
       <div className="cat-head">
         <h2>Categories</h2>

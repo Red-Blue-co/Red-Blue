@@ -4,7 +4,7 @@ import './Footer.css';
 const COLUMNS = [
   { title: 'Shop', links: ['All drinks', 'Sodas', 'Iced teas', '12-packs'] },
   { title: 'Help', links: ['Delivery', 'Returns', 'Track order', 'Contact us'] },
-  { title: 'Company', links: ['About Red·Blue', 'Sustainability', 'Careers', 'Press'] },
+  { title: 'Company', links: ['About Two Tone', 'Sustainability', 'Careers', 'Press'] },
 ];
 
 function Footer() {
@@ -14,7 +14,7 @@ function Footer() {
     <footer className="footer">
       <div className="footer-top">
         <div className="footer-brand">
-          <a href="#top" className="footer-logo"><span className="red">Red</span>·<span className="blue">Blue</span></a>
+          <a href="#top" className="footer-logo"><img src="/img/brand/emblem.svg" alt="Two Tone emblem" className="footer-emblem" /><span>Two Tone</span></a>
           <p>Small-batch soft drinks, shipped cold to your door.</p>
           <form
             className="footer-news"
@@ -33,7 +33,7 @@ function Footer() {
         ))}
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Red·Blue · A demo store</span>
+        <span>© {new Date().getFullYear()} Two Tone · A demo store</span>
         <span className="footer-pay" aria-label="Payment methods">
           <i>VISA</i><i>Mastercard</i><i>PayPal</i><i>Klarna</i>
         </span>

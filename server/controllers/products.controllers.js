@@ -4,7 +4,7 @@ const getProduct_controller = async (req, res, next) => {
     try {
         const { productId } =  req.query;
         if (!productId) {
-            throw new ApplicationError("send the valuer your data")
+            throw new ApplicationError("Please choose a product.")
         }
         const sql = `SELECT productId, productName as name, productDescription as disp, productImg as img   
                 FROM products
@@ -12,9 +12,9 @@ const getProduct_controller = async (req, res, next) => {
                 isDeleted = 0 `;
         const result = await MySQLDB_Helper.executeQuery(sql, [productId]);
         if (result) {
-            res.json(ApplicationSuccess.getSuccessObject(result, "I got your product"))
+            res.json(ApplicationSuccess.getSuccessObject(result, "Product found."))
         } else {
-            throw new ApplicationError("Wrong Product Id")
+            throw new ApplicationError("We couldn't find that product.")
         }
     } catch (err) {
         throw err
@@ -42,7 +42,7 @@ const getBannerDetails_controllers = async (req, res, next) => {
                  ORDER BY id`;
     const result = await MySQLDB_Helper.executeQuery(sql, []);
     if (!result) {
-        throw new ApplicationError("Banners not found")
+        throw new ApplicationError("We couldn't load the featured drinks.")
     }
     res.json(ApplicationSuccess.getSuccessObject(result, "Banners"))
 }

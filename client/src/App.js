@@ -9,6 +9,9 @@ import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import { LoaderProvider, useLoader } from "./LoaderContext";
 import IteamCard from "./componets/IteamCard/IteamCard";
+import CartPage from "./componets/Cart/CartPage";
+import Profile from "./componets/Profile/Profile";
+import { CartProvider } from "./CartContext";
 import "./premium.css"; // last, so it refines every component style
 // import AddToCart from "./componets/AddToCart/AddToCart";
 
@@ -24,6 +27,8 @@ const GlobalLoader = () => {
 const router = createBrowserRouter([
   { path: "/", element: <Login /> },
   { path: "/home", element: <Home /> },
+  { path: "/cart", element: <CartPage /> },
+  { path: "/profile", element: <Profile /> },
   { path: "/i", element: <IteamCard /> },
 ]);
 
@@ -43,7 +48,9 @@ const App = () => {
   return (
     <LoaderProvider>
       <ErrorBoundary>
-        <AppWrapper />
+        <CartProvider>
+          <AppWrapper />
+        </CartProvider>
       </ErrorBoundary>
     </LoaderProvider>
   );

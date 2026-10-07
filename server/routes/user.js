@@ -8,6 +8,7 @@ router.post('/signup', use(usersControllers.createUser_controller));
 router.post('/verifyotp', use(usersControllers.verifyOtp_controller));
 router.get('/getpassword', use(usersControllers.forgetPassword_controller));
 router.get('/getotp', use(usersControllers.reSendOtp_controller))
+router.post('/update', use(usersControllers.updateProfile_controller));
 module.exports = {
     router
 }

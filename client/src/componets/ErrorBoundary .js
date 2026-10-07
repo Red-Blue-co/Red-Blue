@@ -14,7 +14,7 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error("Error caught:", error, errorInfo);
-    toast.error("Something went wrong! Please try again.");
+    toast.error("Something went wrong on our side. Please refresh and try again.");
   }
 
   render() {

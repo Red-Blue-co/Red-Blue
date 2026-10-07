@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Two Tone emblem: two cans under one lid form "TT"; one solid, one half poured -->
+  <defs>
+    <path id="ring" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/>
+    <clipPath id="can"><rect x="67" y="44" width="17" height="44" rx="6"/></clipPath>
+  </defs>
+  <circle cx="60" cy="60" r="57" fill="#0e5560"/>
+  <circle cx="60" cy="60" r="53" fill="none" stroke="#f2d95c" stroke-width="0.8"/>
+  <circle cx="60" cy="60" r="37" fill="none" stroke="#f2d95c" stroke-width="0.8"/>
+  <text font-family="Inter, Arial, sans-serif" font-weight="600" font-size="6.6" letter-spacing="3.1" fill="#f2d95c"><textPath href="#ring" startOffset="2%">TWO TONE · SODAS &amp; TEAS · CRAFTED COLD · </textPath></text>
+  <rect x="55" y="27" width="10" height="9" rx="4.5" fill="none" stroke="#f2d95c" stroke-width="1.8"/>
+  <rect x="33" y="35" width="54" height="8" rx="4" fill="#f2d95c"/>
+  <rect x="36" y="44" width="17" height="44" rx="6" fill="#f2d95c"/>
+  <rect x="67" y="44" width="17" height="44" rx="6" fill="none" stroke="#f2d95c" stroke-width="1.8"/>
+  <g clip-path="url(#can)"><path d="M60 66c4 3 8-3 12 0s8 3 12 0s8-3 12 0V96H60z" fill="#f2d95c"/></g>
+</svg>

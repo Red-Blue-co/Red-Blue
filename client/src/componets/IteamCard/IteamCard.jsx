@@ -68,7 +68,7 @@ function IteamCard({ onAdd, categoryId }) {
           </ul>
           <div className='buy'>
             <span className='price'>€{Number(item.price).toFixed(2)}<small>/ 330 ml</small></span>
-            <AddToCart onAdd={onAdd} />
+            <AddToCart onAdd={() => onAdd?.(item)} />
           </div>
         </div>
         <img src= {item.img} alt={item.name} />

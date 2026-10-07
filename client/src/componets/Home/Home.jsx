@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from '../../CartContext';
 import './Home.css';
 import Category from '../Categories/Category';
 import Footer from '../Footer/Footer';
@@ -10,8 +11,26 @@ function Home() {
   const [banners, setBanners] = useState([]);
   const [activeClass, setActiveClass] = useState(0);
   const [activeToggel, setActiveToggle] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
+  // the header stays at the top; once the page scrolls it gets a solid background
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  const nav = useNavigate();
+  const { count: cartCount, add } = useCart();
+  // add to the cart; with nobody signed in, go to sign in
+  const addToCart = async (product) => { if (!(await add(product)) && !localStorage.getItem('twotone-user')) nav('/'); };
   const activeIndex = banners[activeClass] || { name: '', img: '', color: '#fc4a55' };
+
+  // arriving from another page with #drinks: scroll down once the page has drawn
+  useEffect(() => {
+    if (window.location.hash !== '#drinks') return;
+    const t = setTimeout(() => document.getElementById('drinks')?.scrollIntoView({ behavior: 'smooth' }), 400);
+    return () => clearTimeout(t);
+  }, []);
 
   useEffect(() => {
     req.get('/products/getbanners').then((res) => {
@@ -32,13 +51,13 @@ function Home() {
     <div className='home' id='top'>
       <div className='section'>
         <div className='bg' style={{ background: activeIndex.color }}></div>
-        <div className="header">
-          <Link to='#' className='logo'><span className='logo-red'>Red</span>·<span className='logo-blue'>Blue</span></Link>
+        <div className={`header ${scrolled ? 'scrolled' : ''}`}>
+          <Link to='/home' className='logo'><img src='/img/brand/mark-lemon.svg' alt='' className='logo-mark' />Two Tone</Link>
           <div  className={`toggle ${activeToggel? 'active' : ''}`} onClick={() => setActiveToggle(prev => !prev)}> </div>
           <ul  className= {` navigation ${activeToggel ? 'active' : ''}`}> 
-            <li className='nav-item'><Link to='#' className='active'>Home</Link></li>
-            <li className='nav-item'><Link to='#'>Profile</Link></li>
-            <li className='nav-item'><Link to='#' className='cart-link'>Cart <span className='cart-count'>{cartCount}</span></Link></li>
+            <li className='nav-item'><Link to='/home' className='active'>Home</Link></li>
+            <li className='nav-item'><Link to='/profile'>Profile</Link></li>
+            <li className='nav-item'><Link to='/cart' className='cart-link'>Cart <span className='cart-count'>{cartCount}</span></Link></li>
           </ul>
         </div>
         <div className='content'>
@@ -65,7 +84,7 @@ function Home() {
           ))}
         </ul>
       </div>
-      <Category onAdd={() => setCartCount((n) => n + 1)} />
+      <Category onAdd={addToCart} />
       <Footer />
       
     </div>

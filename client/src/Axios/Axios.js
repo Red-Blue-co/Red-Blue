@@ -23,7 +23,7 @@ req.interceptors.response.use(toScreenShape, (error) => {
     return toScreenShape(error.response);
   }
   // Server unreachable or a non-JSON reply: show a message instead of crashing
-  return { data: { errorCode: "NETWORK", errorDescription: "Can't reach the server right now. Please try again." } };
+  return { data: { errorCode: "NETWORK", errorDescription: "We can't reach Two Tone right now. Check your connection and try again." } };
 });
 
 export default req

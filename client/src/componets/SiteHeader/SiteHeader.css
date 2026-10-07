@@ -1,0 +1,52 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 10px 24px -18px rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px max(24px, 6vw);
+  background: #0e5560;
+  color: #f6f1e9;
+}
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #f2d95c;
+  text-decoration: none;
+}
+.site-logo img { width: 34px; height: 34px; }
+.site-header nav { display: flex; gap: 6px; }
+.site-header nav a {
+  padding: 8px 16px;
+  border-radius: 40px;
+  color: #f6f1e9;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.site-header nav a.active,
+.site-header nav a:hover { background: #f6f1e9; color: #0e5560; }
+.site-cart span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  margin-left: 6px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: #f2d95c;
+  color: #0a3f47;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+@media (max-width: 600px) {
+  .site-header { padding: 16px 16px; }
+  .site-logo { font-size: 1.25rem; }
+  .site-header nav a { padding: 7px 10px; font-size: 0.85rem; }
+}
