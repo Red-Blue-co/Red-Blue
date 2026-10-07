@@ -3,7 +3,7 @@ import './IteamCard.css'
 // import { Link } from 'react-router-dom'
 import AddToCart from '../AddToCart/AddToCart'
 import req from '../../Axios/Axios'
-function IteamCard() {
+function IteamCard({ onAdd }) {
   const [activeToggel, setActiveToggle] = useState(false)
   // The product cards come from the products table: { productId, name, disp, img }
   const [products, setProducts] = useState([])
@@ -22,8 +22,9 @@ function IteamCard() {
          <div className= "circle"  > </div>
         <div className='contents'>
           <h2>{item.name}</h2>
+          <span className='price'>€{Number(item.price).toFixed(2)}</span>
           <p>{item.disp}</p>
-          <AddToCart />
+          <AddToCart onAdd={onAdd} />
         </div>
         <img src= {item.img} alt={item.name} />
 

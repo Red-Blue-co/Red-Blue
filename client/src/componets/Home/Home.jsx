@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import Category from '../Categories/Category';
+import Footer from '../Footer/Footer';
 import req from '../../Axios/Axios';
 
 function Home() {
@@ -9,6 +10,7 @@ function Home() {
   const [banners, setBanners] = useState([]);
   const [activeClass, setActiveClass] = useState(0);
   const [activeToggel, setActiveToggle] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const activeIndex = banners[activeClass] || { name: '', img: '', color: '#fc4a55' };
 
   useEffect(() => {
@@ -27,23 +29,23 @@ function Home() {
   }, [banners.length]);
 
   return (
-    <div className='home'>
+    <div className='home' id='top'>
       <div className='section'>
         <div className='bg' style={{ background: activeIndex.color }}></div>
         <div className="header">
-          <Link to='#' className='logo'> logo </Link>
+          <Link to='#' className='logo'><span className='logo-red'>Red</span>·<span className='logo-blue'>Blue</span></Link>
           <div  className={`toggle ${activeToggel? 'active' : ''}`} onClick={() => setActiveToggle(prev => !prev)}> </div>
           <ul  className= {` navigation ${activeToggel ? 'active' : ''}`}> 
             <li className='nav-item'><Link to='#' className='active'>Home</Link></li>
             <li className='nav-item'><Link to='#'>Profile</Link></li>
-            <li className='nav-item'><Link to='#'>Cart</Link></li>
+            <li className='nav-item'><Link to='#' className='cart-link'>Cart <span className='cart-count'>{cartCount}</span></Link></li>
           </ul>
         </div>
         <div className='content'>
           <div className='textbox'>
             <h2>Welcome to our store</h2>
             <p>Discover the best products at unbeatable prices.</p>
-            <Link to='#' className='btn'>Shop Now</Link>
+            <a href='#drinks' className='btn'>Shop Now</a>
           </div>
           <div className='imgbox'>
             {activeIndex.img && <img key={activeIndex.img} src={activeIndex.img} alt={activeIndex.name} />}
@@ -62,7 +64,8 @@ function Home() {
           ))}
         </ul>
       </div>
-      <Category />
+      <Category onAdd={() => setCartCount((n) => n + 1)} />
+      <Footer />
       
     </div>
   );

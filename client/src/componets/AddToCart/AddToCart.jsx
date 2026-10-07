@@ -2,11 +2,10 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 import "./AddToCart.css";
-import axios from "axios";
 
 gsap.registerPlugin(MorphSVGPlugin);
 
-const AddToCart = () => {
+const AddToCart = ({ onAdd }) => {
   const buttonRef = useRef(null);
 
   const handleClick = async (e) => {
@@ -19,23 +18,8 @@ const AddToCart = () => {
     // Animate initial visual feedback (e.g. button press)
     gsap.to(button, { "--background-scale": 0.97, duration: 0.15 });
 
-    try {
-      // Replace with your actual API endpoint and payload
-      const response = await axios.get('/user/getpassword',
-        {
-        param: "111" 
-    }
-      ) 
-      const data = await response.json();
-      console.log("API response:", data);
-      // You can check response.ok or data.status to ensure success
-      // For now, treat success and error similarly
-    } catch (error) {
-      console.error("API call failed: ", error);
-    }
-
-    // At this point the API call is complete.
-    // Now run the full animation timeline.
+    // Count it in the header cart (there is no cart API yet)
+    onAdd?.();
 
     // 1. Background and initial feedback animation
     gsap.to(button, {

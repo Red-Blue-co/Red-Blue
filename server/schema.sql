@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS products (
   productDescription TEXT,
   productImg         VARCHAR(500),
   productColor       VARCHAR(20)  NOT NULL DEFAULT '#0065c3',
+  productPrice       DECIMAL(6,2) NOT NULL DEFAULT 0,
   isDeleted          TINYINT(1)   NOT NULL DEFAULT 0
 );
 

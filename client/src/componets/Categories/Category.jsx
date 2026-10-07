@@ -3,7 +3,7 @@ import './Category.css';
 import IteamCard from '../IteamCard/IteamCard';
 import req from '../../Axios/Axios';
 
-function Category() {
+function Category({ onAdd }) {
   const [hoveredColor, setHoveredColor] = useState(null);
   // The category cards come from the categories table: { id, name, tagline, img, color }
   const [categories, setCategories] = useState([]);
@@ -40,7 +40,7 @@ function Category() {
           </div>
         ))}
         <br />
-        <IteamCard />
+        <IteamCard onAdd={onAdd} />
       </div>
     </div>
   );

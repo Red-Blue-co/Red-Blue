@@ -28,23 +28,24 @@ CREATE TABLE IF NOT EXISTS categories (
 );
 DELETE FROM categories;
 INSERT INTO categories (categoryName, categoryTagline, categoryImg, categoryColor) VALUES
-  ('Sodas',              'Fizzy classics',      'https://images.unsplash.com/photo-1696739696220-8d2e27465662?auto=format&fit=crop&w=700&h=700&q=75', '#162527'),
+  ('Sodas',              'Fizzy classics',      '/img/categories/sodas.jpg', '#162527'),
   ('Iced teas and more', 'Cold, light, fresh',  'https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=700&h=700&q=75', '#202011');
 
--- The product cards, each with the colour of its drink
+-- The products: Red-Blue's own cans (images live in client/public/img/products), with price and colour
 DROP TABLE IF EXISTS products;
 CREATE TABLE products (
   productId          INT AUTO_INCREMENT PRIMARY KEY,
   productName        VARCHAR(255) NOT NULL,
   productDescription TEXT,
   productImg         VARCHAR(500),
-  productColor       VARCHAR(20)  NOT NULL DEFAULT '#0065c3',
-  isDeleted          TINYINT(1)   NOT NULL DEFAULT 0
+  productColor       VARCHAR(20)   NOT NULL DEFAULT '#0065c3',
+  productPrice       DECIMAL(6, 2) NOT NULL DEFAULT 0,
+  isDeleted          TINYINT(1)    NOT NULL DEFAULT 0
 );
-INSERT INTO products (productName, productDescription, productImg, productColor) VALUES
-  ('Classic Cola',     'The original fizz: crisp, sweet and best over a glass full of ice.',          'https://images.unsplash.com/photo-1629186235045-80d4147d90dc?auto=format&fit=crop&w=600&h=600&q=75', '#a8532e'),
-  ('Lime Fizz',        'Sparkling water with fresh lime and a hint of mint. Light and zesty.',          'https://images.unsplash.com/photo-1651993737174-6890c1daef5b?auto=format&fit=crop&w=600&h=600&q=75', '#8fab3a'),
-  ('Orange Pop',       'Bright orange soda in a glass bottle, bursting with real citrus flavour.',      'https://images.unsplash.com/photo-1566846128021-b940b0eec910?auto=format&fit=crop&w=600&h=600&q=75', '#f26a1b'),
-  ('Peach Iced Tea',   'Black tea brewed cold with ripe peach and a squeeze of lime.',                  'https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=600&h=600&q=75', '#c27a2c'),
-  ('Mint Sparkling',   'Sparkling water with fresh mint leaves and a few orange slices.',                'https://images.unsplash.com/photo-1610378833220-9e374e37856b?auto=format&fit=crop&w=600&h=600&q=75', '#6fa889'),
-  ('Root Beer',        'Creamy, spiced and smooth. Poured straight from the tap, served cold.',         'https://images.unsplash.com/photo-1499961024600-ad094db305cc?auto=format&fit=crop&w=600&h=600&q=75', '#7d4a2f');
+INSERT INTO products (productName, productDescription, productImg, productColor, productPrice) VALUES
+  ('Classic Cola',   'The original fizz: crisp, sweet and best over a glass full of ice.',  '/img/products/classic-cola.png',   '#b3261e', 1.49),
+  ('Lime Fizz',      'Sparkling water with fresh lime and a hint of mint. Light and zesty.',  '/img/products/lime-fizz.png',      '#7da62d', 1.29),
+  ('Orange Pop',     'Bright orange soda bursting with real citrus flavour.',                 '/img/products/orange-pop.png',     '#f26a1b', 1.29),
+  ('Peach Iced Tea', 'Black tea brewed cold with ripe peach and a squeeze of lime.',          '/img/products/peach-iced-tea.png', '#e0973f', 1.59),
+  ('Mint Sparkling', 'Sparkling water with fresh mint. No sugar, all refresh.',               '/img/products/mint-sparkling.png', '#5fae8c', 1.19),
+  ('Root Beer',      'Creamy, spiced and smooth, with a vanilla finish. Serve ice cold.',     '/img/products/root-beer.png',      '#5a2f1d', 1.69);

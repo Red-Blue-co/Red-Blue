@@ -48,10 +48,30 @@
 
 .header .logo {
     position: relative;
-    font-weight: 600;
+    font-weight: 700;
     color: #fff;
     text-decoration: none;
-    font-size: 2em;
+    font-size: 1.8em;
+    letter-spacing: -0.5px;
+}
+
+.cart-count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 22px;
+    height: 22px;
+    margin-left: 6px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background: #fff;
+    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.header .navigation li a:hover .cart-count {
+    background: #333;
+    color: #fff;
 }
 
 .header .navigation {
