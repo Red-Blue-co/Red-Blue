@@ -33,7 +33,7 @@ function Footer() {
         ))}
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Two Tone · A demo store</span>
+        <span>© {new Date().getFullYear()} Two Tone · A demo store by <a href="https://sherin.fun" rel="author">Sherin Varghese</a></span>
         <span className="footer-pay" aria-label="Payment methods">
           <i>VISA</i><i>Mastercard</i><i>PayPal</i><i>Klarna</i>
         </span>

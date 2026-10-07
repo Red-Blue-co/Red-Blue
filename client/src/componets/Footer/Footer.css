@@ -65,3 +65,6 @@
   .footer-top { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
 }
+
+.footer-bottom a { color: #f2d95c; text-decoration: none; }
+.footer-bottom a:hover { text-decoration: underline; text-underline-offset: 3px; }

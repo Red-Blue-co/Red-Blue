@@ -41,5 +41,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "Two Tone: a demo drinks store (React front end)",
+  "author": {
+    "name": "Sherin Varghese",
+    "email": "admin@sherin.fun",
+    "url": "https://sherin.fun"
+  },
+  "homepage": "https://app.sherin.fun",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Red-Blue-co/Red-Blue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Red-Blue-co/Red-Blue/issues"
   }
 }

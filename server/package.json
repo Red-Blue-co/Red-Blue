@@ -7,10 +7,22 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "SherinV",
+  "author": {
+    "name": "Sherin Varghese",
+    "email": "admin@sherin.fun",
+    "url": "https://sherin.fun"
+  },
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
     "sv-nex": "^1.0.9"
+  },
+  "homepage": "https://app.sherin.fun",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Red-Blue-co/Red-Blue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Red-Blue-co/Red-Blue/issues"
   }
 }
