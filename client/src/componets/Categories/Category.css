@@ -229,3 +229,9 @@
 
 /* keep the label clear of the ring */
 .containers .box.chosen .glass { bottom: -54px !important; }
+
+/* phones: both category cards fit side by side */
+@media (max-width: 600px) {
+  .containers { gap: 16px; padding: 0 16px; width: 100%; }
+  .containers .box { width: calc(50% - 8px); max-width: 170px; height: auto; aspect-ratio: 1; }
+}

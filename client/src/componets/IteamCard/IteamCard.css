@@ -386,3 +386,93 @@
 .cardboady.fading { opacity: 0.25; }
 .cardboady:not(.fading) .card { animation: card-rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 @keyframes card-rise { from { opacity: 0; transform: translateY(16px); } }
+
+/* ---------- phones and tablets ---------- */
+/* Two (or more) cans per row instead of one big circle each. Tapping a can marks it and opens
+   its details as a full-width panel under its row (see IteamCard.jsx), so the cans never move. */
+@media (max-width: 991px) {
+  .cardboady {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 6px 14px;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 16px;
+    justify-items: center;
+    align-items: start;
+  }
+  .card { width: 100%; max-width: 220px; height: 180px; margin: 0 0 48px; }
+  .card .circle::before { clip-path: circle(66px at center); }
+  .card:not(.active):hover .circle::before { clip-path: circle(70px at center); }
+  .card img { height: 112px; }
+  .card .label { bottom: -38px; }
+  .card .label b { font-size: 0.95em; white-space: nowrap; }
+
+  /* the chosen can: a ring around its circle and a small lift */
+  .card.chosen .circle::before { clip-path: circle(72px at center); }
+  .card.chosen .circle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px solid var(--c);
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+  }
+  .card.chosen img { transform: translate(-50%, -54%) rotate(-6deg); }
+  .card.chosen .label b { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--c); }
+
+  /* the details sheet: slides up over the page */
+  .sheet {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(16, 14, 12, 0.55);
+    animation: sheet-fade 0.25s ease both;
+  }
+  .sheet-panel {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: 92vh;
+    overflow-y: auto;
+    animation: sheet-up 0.38s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  .sheet-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 6;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    color: #16130f;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .sheet .card.detail {
+    width: 100%;
+    max-width: none;
+    height: min(540px, 84vh);
+    margin: 0;
+    border-radius: 26px 26px 0 0;
+    cursor: default;
+    animation: none;
+  }
+  .sheet .card.detail .circle { border-radius: 26px 26px 0 0; }
+  .sheet .card.detail .circle::before { clip-path: circle(800px at center); }
+  .sheet .card.detail .label { display: none; }
+  .sheet .card.detail img { top: 79%; height: 185px; }
+  .sheet .card.detail .circle::after { width: 250px; height: 250px; bottom: -90px; }
+}
+@keyframes sheet-fade { from { opacity: 0; } }
+@keyframes sheet-up { from { transform: translateY(100%); } }

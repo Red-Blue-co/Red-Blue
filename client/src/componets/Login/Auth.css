@@ -527,3 +527,15 @@
 @media (prefers-reduced-motion: reduce) {
   .auth-copy, .can, .can-label, .can-drop, .auth-cans img, .otp-container, .otp-overlay { animation: none; }
 }
+
+/* phones: a shorter picture on top, so the sign-in can shows up sooner */
+@media (max-width: 600px) {
+  .auth-art { padding: 22px 20px 0; }
+  .auth-copy { margin-top: 18px; }
+  .auth-copy h2 { font-size: 1.85rem; }
+  .auth-copy p { font-size: 0.95rem; margin-top: 8px; }
+  .auth-cans { margin-top: 10px; }
+  .auth-cans img { height: 112px; }
+  .auth-cans img:nth-child(2) { height: 132px; }
+  .auth-panel { padding-top: 18px; }
+}
